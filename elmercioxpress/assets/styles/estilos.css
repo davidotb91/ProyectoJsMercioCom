@@ -1,0 +1,26 @@
+.fondoPrincipal {
+    background-image: url(../imagenes/periodicoFondo.jpg)
+}
+
+
+/*agregando style para el carrusel*/
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img {
+    width: 70%;
+    margin: auto;
+}
+
+.fondoSecundario {
+    background-color: darkgray;
+    background-repeat: repeat-x;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+.fondotercero{
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    
+}
