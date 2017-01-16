@@ -1,1 +1,48 @@
-<h1>Estoy en quienes somos</h1>
+<div class="container">
+
+    <head>
+        <style>
+            #menu {
+                float: left;
+                width: 150px;
+            }
+            
+            #contenido {
+                float: left;
+                width: 550px;
+            }
+            
+            li a {
+                display: block;
+                color: #000;
+                padding: 8px 16px;
+                text-decoration: none;
+            }
+            
+            li a.active {
+                background-color: black;
+                color: white;
+            }
+            
+            li a:hover:not(.active) {
+                background-color: #555;
+                color: white;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="container">
+            <div id="menu">
+                <ul class="nav navbar-nav">
+                <li><a href="/Inicio">Inicio</a></li>
+                <li><a href="/Suscripción">Suscripción</a></li>
+                <li><a href="/Contáctanos">Contáctanoss</a></li>
+                <li><a href="/Salir">Salir</a></li>
+
+            </ul>
+            </div>
+            <div id="contenido"> contenido</div>
+        </div>
+    </body>
+</div>
