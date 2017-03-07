@@ -1,24 +1,39 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
-            <div id="contenido">
-                <label>Asunto</label>
-                <br>
-                <input id="Asunto"> </input>
-                <br>
-                <label>
-                    <br>Contenido </label>
-                <br>
-                <textarea name="comentarios" rows="10" cols="100">Escribe aquí tus comentarios</textarea>
-                <br>
-                <button type="button" onclick="myFunction()">enviar</button>
+            <form action="/Heroe/CrearHeroe" method="post">
+                <div id="contenido">
+                    <label>Asunto</label>
+                    <br>
+                    <input id="Asunto"> </input>
+                    <br>
+                    <label>
+                        <br>Contenido </label>
+                    <br>
+                    <textarea name="comentarios" rows="10" cols="100">Escribe aquí tus comentarios</textarea>
+                    <br>
+                    <button type="submit" class="btn btn-success">Enviar:)</button>
+            </form>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-4"> </div>
         <div class="col-md-4">
-        </div>
+            <--! <% for(var i=0; i<sugerencias.length; i++){ %>
+                <div class="row ma-margen-top-bottom ma-padding-top-bottom">
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-4">
+                        <div class="text-center">
+                            <h1> <%= sugerencias[i].asunto %> </h1> </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-5">
+                        <div class="text-center" style="margin-top: 27px;">
+                            <h4> <%= sugerencias[i].contenido %> </h4> </div>
+                    </div>
+                </div>
+                <% } %> !--> </div>
         <div class="col-md-4"> </div>
     </div>
 </div>

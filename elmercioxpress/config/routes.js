@@ -45,7 +45,7 @@ module.exports.routes = {
         view: 'registro'
     }
     
-    'get /Contactanos': 'RutasController.crearSugerencia',
+   
     /***************************************************************************
      *                                                                          *
      * Custom routes here...                                                    *
