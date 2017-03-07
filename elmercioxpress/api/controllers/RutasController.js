@@ -11,4 +11,20 @@ module.exports = {
     , crearSugerencia: function (req, res) {
         return res.view('contactanos');
     }
+    , listarSugerencia: function (req, res) {
+        Sugerencias.find().exec(function (error, sugerenciasEncontrados) {
+            if (error) {
+                return res.view('error', {
+                    error: {
+                        descripcion: "Hubo un problema listando los poderes"
+                        , rawError: error
+                        , url: "/contactanos"
+                    }
+                });
+            }
+            res.view('contactanos', {
+                sugerencias: sugerenciasEncontrados
+            })
+        })
+    }
 , };

@@ -35,7 +35,7 @@ module.exports = {
                             error: {
                                 descripcion: "Fallo al crear el contenido"
                                 , rawError: err
-                                , url: "/Contenido"
+                                , url: "/contactanos"
                             }
                         });
                     }
@@ -78,5 +78,6 @@ module.exports = {
             });
         }
     }
+    
 };
 
