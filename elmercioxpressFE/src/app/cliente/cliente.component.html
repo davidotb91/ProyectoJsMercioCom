@@ -1,0 +1,139 @@
+<h1 class="text-center">Ingresa tus datos por favor</h1>
+<h2 class="text-center">
+  {{title}}
+</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <form class="animated bounceIn" (ngSubmit)="crearCliente(NuevoClienteForm)" #NuevoClienteForm="ngForm">
+        <div class="form-group">
+          <label>Nombre del Cliente:</label>
+          <input required
+                 type="text"
+                 class="form-control"
+                 placeholder="Ingrese su nombre"
+                 name="nombreCliente"
+                 [(ngModel)]="nuevoCliente.nombreCliente"
+                 #nombreCliente="ngModel"
+                 #nombreElm>
+        </div>
+        <div class="form-group">
+          <label>Conjunto Residencial:</label>
+          <input required
+                 type="text"
+                 class="form-control"
+                 placeholder="Ingrese el nombre del conjunto"
+                 name="conjuntoCliente"
+                 [(ngModel)]="nuevoCliente.conjuntoCliente"
+                 #conjuntoCliente="ngModel"
+                 #nombreElm>
+        </div>
+        <div class="form-group">
+          <label>Numero de casa:</label>
+          <input required
+                 type="number"
+                 min="0"
+                 max="100"
+                 class="form-control"
+                 placeholder="Ingrese numero de casa"
+                 name="numCasaCliente"
+                 [(ngModel)]="nuevoCliente.numCasaCliente"
+                 #numCasaCliente="ngModel"
+                 #nombreElm>
+        </div>
+
+        <button [disabled]="disabledButtons.NuevoClienteFormSubmitButton || !NuevoClienteForm.valid" type="submit" class="btn btn-block btn-success">Crear Cliente</button>
+      </form>
+    </div>
+    <div class="col-sm-6">
+      <h1>{{nuevoCliente.nombreCliente}}</h1>
+    </div>
+  </div>
+
+  <br><br>
+  <br><br>
+
+  <h1 class="text-center" style="border-top: solid; padding-top: 1cm">Lista de clientes Registrados</h1>
+
+  <div class="row" >
+    <div class="col-sm-12 animated flipInX" style="border-bottom: solid; padding-bottom: 1cm; padding-top: 1cm" *ngFor="let cliente of clientes">
+      <div class="row">
+        <div class="col-sm-5 text-center">
+          <h3>{{cliente.nombreCliente}}</h3>
+        </div>
+
+        <div class="col-sm-7 text-center">
+          <p> Conjunto: {{cliente.conjuntoCliente}} </p>
+          <p> Número casa: {{cliente.numCasaCliente}}</p>
+
+          <br>
+          <a [routerLink]="[cliente.id,'suscripcion']">Ir a Suscripción</a>
+        </div>
+      </div>
+
+      <div class="row" style="padding-top: 1cm" [hidden]="!cliente.formularioCerrado">
+        <div class="col-sm-5">
+          <button class="btn btn-block btn-info"
+                  (click)="cliente.formularioCerrado = !cliente.formularioCerrado">Actualizar Cliente</button>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+          <button class="btn btn-block btn-danger" (click)="borrarCliente(cliente.id)">X</button>
+        </div>
+
+      </div>
+      <div class="row animated flipInY" [hidden]="cliente.formularioCerrado">
+        <form action="">
+          <form class="animated bounceIn" (ngSubmit)="editarCliente(cliente)" #NuevoClienteForm="ngForm">
+            <div class="form-group">
+              <label>Nombre del Cliente:</label>
+              <input required
+                     type="text"
+                     class="form-control"
+                     placeholder="Ingrese el nombre del Cliente"
+                     name="nombreCliente"
+                     [(ngModel)]="cliente.nombreCliente"
+                     #nombreCliente="ngModel"
+                     #nombreElm>
+            </div>
+            <div class="form-group">
+              <label>Conjunto del Cliente:</label>
+              <input required
+                     type="text"
+                     class="form-control"
+                     placeholder="Ingrese el nombre del conjunto"
+                     name="conjuntoCliente"
+                     [(ngModel)]="cliente.conjuntoCliente"
+                     #conjuntoCliente="ngModel"
+                     #nombreElm>
+            </div>
+            <div class="form-group">
+              <label>Número de casa del Cliente:</label>
+              <input required
+                     type="number"
+                     min="0"
+                     max="100"
+                     class="form-control"
+                     placeholder="Ingrese el número de casa del Cliente"
+                     name="numCasaCliente"
+                     [(ngModel)]="cliente.numCasaCliente"
+                     #numCasaCliente="ngModel"
+                     #nombreElm>
+            </div>
+
+            <div class="col-sm-6">
+              <button [disabled]="disabledButtons.NuevoClienteFormSubmitButton ||!NuevoClienteForm.valid" type="submit"
+                      class="btn btn-block btn-success">Actualizar Cliente
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <button type="button" class="btn btn-block btn-warning" (click)="cliente.formularioCerrado=!cliente.formularioCerrado">
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

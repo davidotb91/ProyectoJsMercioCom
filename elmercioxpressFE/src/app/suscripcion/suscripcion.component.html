@@ -1,0 +1,141 @@
+<h1 class="text-center">Suscripciones para clientes</h1>
+<h2 class="text-center">
+  {{title}}
+</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <form class="animated bounceIn" (ngSubmit)="crearSuscripcion(NuevaSuscripcionForm)" #NuevaSuscripcionForm="ngForm">
+        <div class="form-group">
+          <label>Tipo Suscripcion:</label>
+          <input required
+                 type="text"
+                 class="form-control"
+                 placeholder="Ingrese el tipo suscripcion"
+                 name="tipoSuscripcion"
+                 [(ngModel)]="nuevaSuscripcion.tipoSuscripcion"
+                 #tipoSuscripcion="ngModel"
+                 #nombreElm>
+        </div>
+
+        <div class="form-group">
+          <label>Fecha:</label>
+          <input required
+                 type="date"
+                 
+                 class="form-control"
+                 placeholder="ingrese la feacha"
+                 name="fechaSuscripcion"
+                 [(ngModel)]="nuevaSuscripcion.fechaSuscripcion"
+                 #fechaSuscripcion="ngModel"
+                 #nombreElm>
+        </div>
+
+        <div class="form-group">
+          <label>Costo:</label>
+          <input required
+                 type="number"
+                 min="0"
+                 max="100"
+                 class="form-control"
+                 placeholder="Ingrese el costo suscripcion"
+                 name="costoSuscripcion"
+                 [(ngModel)]="nuevaSuscripcion.costoSuscripcion"
+                 #costoSuscripcion="ngModel"
+                 #nombreElm>
+        </div>
+
+        <button [disabled]="disabledButtons.NuevaSuscripcionFormSubmitButton || !nuevaSuscripcion.valid" type="submit" class="btn btn-block btn-success">Crear Suscripcion</button>
+      </form>
+    </div>
+    <div class="col-sm-6">
+      <h1>{{nuevaSuscripcion.tipoSuscripcion}}</h1>
+    </div>
+  </div>
+
+  <br><br>
+  <br><br>
+
+  <h1 class="text-center" style="border-top: solid; padding-top: 1cm">Lista de suscripciones para cada cliente</h1>
+
+  <div class="row">
+    <div class="col-sm-12 animated flipInX" style="border-bottom: solid; padding-bottom: 1cm; padding-top: 1cm"  *ngFor="let suscripcion of suscripciones">
+      <div class="col-sm-5 text-center">
+        <h3>{{suscripcion.tipoSuscripcion}}</h3>
+      </div>
+
+      <div class="col-sm-7 text-center">
+        <p> Fecha: {{suscripcion.fechaSuscripcion}} </p>
+        <p> Costo: {{suscripcion.costoSuscripcion}}</p>
+      </div>
+
+      <div class="row" [hidden]="!suscripcion.formularioCerrado">
+        <div class="col-sm-5">
+          <button class="btn btn-block btn-info"
+                  (click)="suscripcion.formularioCerrado = !suscripcion.formularioCerrado">Actualizar Suscripcion</button>
+        </div>
+        <div class="col-sm-2"></div>
+        <div class="col-sm-5">
+          <button class="btn btn-block btn-danger" (click)="borrarSuscripcion(suscripcion.id)">X</button>
+        </div>
+
+      </div>
+      <div class="row animated flipInY" [hidden]="suscripcion.formularioCerrado">
+        <form action="">
+          <form class="animated bounceIn" (ngSubmit)="editarSuscripcion(suscripcion, suscripcion.id)" #NuevaSuscripcionForm="ngForm">
+            <div class="form-group">
+              <label>Tipo Suscripcion:</label>
+              <input required
+                     type="text"
+                     class="form-control"
+                     placeholder="Ingrese el tipo suscripcion"
+                     name="tipoSuscripcion"
+                     [(ngModel)]="nuevaSuscripcion.tipoSuscripcion"
+                     #tipoSuscripcion="ngModel"
+                     #nombreElm>
+            </div>
+
+            <div class="form-group">
+              <label>Fecha de suscripción:</label>
+              <input required
+                     type="date"
+                     min="0"
+                     max="100"
+                     class="form-control"
+                     placeholder="ingrese la feacha"
+                     name="fechaSuscripcion"
+                     [(ngModel)]="nuevaSuscripcion.fechaSuscripcion"
+                     #fechaSuscripcion="ngModel"
+                     #nombreElm>
+            </div>
+
+            <div class="form-group">
+              <label>Costo:</label>
+              <input required
+                     type="number"
+                     min="0"
+                     max="100"
+                     class="form-control"
+                     placeholder="Ingrese el costo suscripcion"
+                     name="costoSuscripcion"
+                     [(ngModel)]="nuevaSuscripcion.costoSuscripcion"
+                     #costoSuscripcion="ngModel"
+                     #nombreElm>
+            </div>
+
+            <div class="col-sm-6">
+              <button [disabled]="disabledButtons.NuevaSuscripcionFormSubmitButton ||!NuevaSuscripcionForm.valid" type="submit"
+                      class="btn btn-block btn-success">Actualizar Suscripcion
+              </button>
+            </div>
+            <div class="col-sm-6">
+              <button type="button" class="btn btn-block btn-warning" (click)="suscripcion.formularioCerrado=!suscripcion.formularioCerrado">
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
